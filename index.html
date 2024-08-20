@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rokas - Front End Developer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -34,8 +35,9 @@
             max-width: 1200px;
         }
         .content {
-            flex: 1;
+            flex: 0.5;
         }
+        
         h1 {
             font-size: 5rem;
             font-weight: 800;
@@ -47,9 +49,13 @@
             display: inline-block;
         }
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem; 
             font-weight: 300;
+        }
+        .introductionHeaders {
+            display: flex;
+            flex-direction: column; 
+            gap:10px;
         }
         .buttons {
             display: flex;
@@ -60,12 +66,18 @@
             padding: 0.75rem 1.5rem;
             font-size: 1rem;
             border: none;
-            border-radius: 25px;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+            width:50%;
+        }
+
+        .buttonContainer{
+            display: flex;
+            justify-content: center;
         }
         .btn-primary {
             background-color: #e91e63;
@@ -84,8 +96,7 @@
         .image-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px; 
         }
         .highlight {
             color: #e91e63;
@@ -112,8 +123,8 @@
             font-size: 1rem;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
+            letter-spacing: 2px; 
+            color: #ffffff;
         }
         .scroll-arrow {
             font-size: 2rem;
@@ -130,8 +141,7 @@
                 transform: translateY(-7px);
             }
         }
-        .about-me, .projects, .contact {
-            text-align: center;
+        .about-me, .projects, .contact { 
             padding: 2rem;
         }
         .about-me h2, .projects h2, .contact h2 {
@@ -164,11 +174,19 @@
         .project-card h3 {
             margin-bottom: 1rem;
         }
+        .contact{
+          width:100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
         .contact-form {
             display: flex;
             flex-direction: column;
             max-width: 500px;
             margin: 0 auto;
+            width:100%;
         }
         .contact-form input,
         .contact-form textarea {
@@ -182,10 +200,119 @@
         .contact-form textarea {
             min-height: 150px;
             resize: vertical;
+        } 
+        .technologies {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .technologies h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #e91e63;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e91e63;
+        }
+
+        .tech-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            gap: 25px;
+        }
+
+        .navbar a {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem; 
+            padding: 0.5rem 1rem; 
+            transition: all 0.3s ease; 
+            white-space: nowrap;
+            gap:10px;
+        }
+
+        .navbar a:hover { 
+            transform: translateY(-2px);
+        }
+
+        .navbar i { 
+            font-size: 1.1rem;
+        }
+
+        /* Adjust the top padding of the first section to accommodate the navbar */
+        #home {
+            padding-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .navbar a {
+                margin: 0.5rem;
+            }
         }
     </style>
 </head>
-<body>
+<body> 
+  <nav class="navbar">
+    <a href="mailto:rokosimkaus@gmail.com">
+        <i class="far fa-envelope"></i>
+        <span>rokosimkaus@gmail.com</span>
+    </a>
+    <a href="https://www.linkedin.com/in/rokassimkus/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/Cicada95" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+    </a>
+</nav>
     <section id="home">
         <div class="container">
             <div class="content">
@@ -193,16 +320,11 @@
                     <span>Hi,</span>
                     <div class="accent-bg"></div>
                 </h1>
+                <div class="introductionHeaders">
                 <h2>I'm <span class="highlight">Rokas</span></h2>
-                <h2>front end developer</h2>
-                <div class="buttons">
-                    <button class="btn btn-primary">Contact me</button>
-                    <button class="btn btn-primary">See my resume</button>
-                </div>
-            </div>
-            <div class="image-container">
-                <img src="/api/placeholder/400/500" alt="Rokas - Front End Developer">
-            </div>
+                <h2>front end developer</h2> 
+                </div> 
+            </div> 
         </div>
         <div class="scroll-container" id="scrollToAbout">
             <div class="scroll-text">About me</div>
@@ -211,59 +333,62 @@
     </section>
     
     <section id="about">
-        <div class="about-me">
-            <h2>About Me</h2>
-            <p>
-                As a passionate front-end developer, I bring creativity and technical expertise to every project. 
-                With a keen eye for design and a love for clean, efficient code, I strive to create engaging and 
-                user-friendly web experiences. My skills include HTML5, CSS3, JavaScript, and various modern 
-                frameworks. I'm always eager to learn new technologies and push the boundaries of what's possible 
-                in web development.
-            </p>
-        </div>
-        <div class="scroll-container" id="scrollToProjects">
-            <div class="scroll-text">My Projects</div>
-            <div class="scroll-arrow">↓</div>
-        </div>
-    </section>
+      <div class="about-me">  
+          <p>
+           I thrive on adapting to new ideas and technologies. I'm always eager to take on challenges and collaborate with like-minded individuals to bring innovative solutions to life. I take pride in crafting engaging and user-friendly web experiences by combining my technical skills with a keen eye for design. 
+          </p>
+      </div>
+      <div class="scroll-container" id="scrollToTechnologies">
+          <div class="scroll-text">My Favorite Technologies</div>
+          <div class="scroll-arrow">↓</div>
+      </div>
+  </section>
 
-    <section id="projects">
-        <div class="projects">
-            <h2>My Projects</h2>
-            <p>Here are some of the projects I've worked on. Each one represents a unique challenge and a chance to apply my skills in creative ways.</p>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Project 1</h3>
-                    <p>A responsive web application built with React and Node.js.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project 2</h3>
-                    <p>An e-commerce site with a custom CMS using Vue.js and Firebase.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project 3</h3>
-                    <p>A progressive web app for tracking fitness goals, built with Angular and GraphQL.</p>
-                </div>
+  <section id="technologies">
+      <div class="technologies"> 
+          <div class="tech-grid">
+              <div class="tech-item"> 
+                  <span class="tech-name">ReactJS</span>
+              </div>
+              <div class="tech-item"> 
+                  <span class="tech-name">NextJS</span>
+              </div>
+              <div class="tech-item"> 
+                  <span class="tech-name">TypeScript</span>
+              </div>
+              <div class="tech-item"> 
+                  <span class="tech-name">GraphQL</span>
+              </div>
+              <div class="tech-item"> 
+                  <span class="tech-name">ChakraUI</span>
+              </div>
+              <div class="tech-item"> 
+                <span class="tech-name">Node.js</span>
             </div>
-        </div>
-        <div class="scroll-container" id="scrollToContact">
-            <div class="scroll-text">Contact Me</div>
-            <div class="scroll-arrow">↓</div>
-        </div>
-    </section>
+            <div class="tech-item"> 
+                <span class="tech-name">PostgreSQL</span>
+          </div>
+      </div>
+      <div class="scroll-container" id="scrollToContact">
+        <div class="scroll-text">Let's Talk</div>
+        <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
 
-    <section id="contact">
-        <div class="contact">
-            <h2>Contact Me</h2>
-            <p>Interested in working together? Fill out the form below, and I'll get back to you as soon as possible.</p>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-        </div>
-    </section>
+  
+  <section id="contact">
+    <div class="contact">  
+        <p>Collaboration starts with a conversation.</p>
+        <form class="contact-form" action="https://formspree.io/f/xeojlwwp" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <div class="buttonContainer">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+      </form>
+    </div>
+</section>
 
     <script>
         gsap.set("h1 span", {y: "100%"});
@@ -273,8 +398,7 @@
         
         tl.to("h1 span", {duration: 1, y: 0, ease: "power4.out"})
           .to(".accent-bg", {duration: 0.6, scaleX: 1, ease: "power4.out"}, "-=0.6")
-          .from("h2", {duration: 0.8, y: 30, opacity: 0, ease: "power3.out", stagger: 0.2}, "-=0.4")
-          .from(".btn", {duration: 0.6, y: 20, opacity: 0, ease: "power3.out", stagger: 0.1}, "-=0.4")
+          .from("h2", {duration: 0.8, y: 30, opacity: 0, ease: "power3.out", stagger: 0.2}, "-=0.4") 
           .from(".image-container", {duration: 1, x: 100, opacity: 0, ease: "power3.out"}, "-=0.8")
           .from("#scrollToAbout", {duration: 0.6, y: 30, opacity: 0, ease: "power3.out"}, "-=0.4");
 
@@ -305,10 +429,9 @@
             }
         });
 
-        document.getElementById('scrollToAbout').addEventListener('click', () => goToSection(1));
-        document.getElementById('scrollToProjects').addEventListener('click', () => goToSection(2));
-        document.getElementById('scrollToContact').addEventListener('click', () => goToSection(3));
-        document.getElementById('scrollToTop').addEventListener('click', () => goToSection(0));
+        document.getElementById('scrollToAbout').addEventListener('click', () => goToSection(1)); 
+        document.getElementById('scrollToTechnologies').addEventListener('click', () => goToSection(2)); 
+        document.getElementById('scrollToContact').addEventListener('click', () => goToSection(3)); 
 
         // Keyboard navigation
         window.addEventListener('keydown', (e) => {
@@ -345,6 +468,7 @@
             currentSection = Math.round(window.scrollY / window.innerHeight);
             goToSection(currentSection);
         });
+        
     </script>
 </body>
 </html>
