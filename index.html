@@ -156,24 +156,7 @@
         .scroll-up {
             transform: rotate(180deg);
         }
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .project-card {
-            background-color: #2a2a2a;
-            border-radius: 10px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        .project-card h3 {
-            margin-bottom: 1rem;
-        }
+ 
         .contact{
           width:100%;
           display: flex;
@@ -294,8 +277,10 @@
             }
             .navbar a {
                 margin: 0.5rem;
-            }
+            }  
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
         }
+ 
     </style>
 </head>
 <body> 
