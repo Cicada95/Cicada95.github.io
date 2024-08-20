@@ -1,11 +1,350 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rokas - Front End Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+        }
+        .content {
+            flex: 1;
+        }
+        h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 span {
+            display: inline-block;
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #e91e63;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #c2185b;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+        }
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .highlight {
+            color: #e91e63;
+        }
+        .accent-bg {
+            position: absolute;
+            width: 120%;
+            height: 100%;
+            background-color: #e91e63;
+            top: 0;
+            left: -10%;
+            transform: skew(-10deg);
+            z-index: -1;
+        }
+        .scroll-container {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            cursor: pointer;
+        }
+        .scroll-text {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+        .scroll-arrow {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+        .about-me, .projects, .contact {
+            text-align: center;
+            padding: 2rem;
+        }
+        .about-me h2, .projects h2, .contact h2 {
+            margin-bottom: 1rem;
+        }
+        .about-me p, .projects p, .contact p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        .scroll-up {
+            transform: rotate(180deg);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .project-card {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card h3 {
+            margin-bottom: 1rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to my GitHub Page!</h1>
-    <p>This is a sample page.</p>
+    <section id="home">
+        <div class="container">
+            <div class="content">
+                <h1>
+                    <span>Hi,</span>
+                    <div class="accent-bg"></div>
+                </h1>
+                <h2>I'm <span class="highlight">Rokas</span></h2>
+                <h2>front end developer</h2>
+                <div class="buttons">
+                    <button class="btn btn-primary">Contact me</button>
+                    <button class="btn btn-primary">See my resume</button>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="/api/placeholder/400/500" alt="Rokas - Front End Developer">
+            </div>
+        </div>
+        <div class="scroll-container" id="scrollToAbout">
+            <div class="scroll-text">About me</div>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="about-me">
+            <h2>About Me</h2>
+            <p>
+                As a passionate front-end developer, I bring creativity and technical expertise to every project. 
+                With a keen eye for design and a love for clean, efficient code, I strive to create engaging and 
+                user-friendly web experiences. My skills include HTML5, CSS3, JavaScript, and various modern 
+                frameworks. I'm always eager to learn new technologies and push the boundaries of what's possible 
+                in web development.
+            </p>
+        </div>
+        <div class="scroll-container" id="scrollToProjects">
+            <div class="scroll-text">My Projects</div>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="projects">
+            <h2>My Projects</h2>
+            <p>Here are some of the projects I've worked on. Each one represents a unique challenge and a chance to apply my skills in creative ways.</p>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Project 1</h3>
+                    <p>A responsive web application built with React and Node.js.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Project 2</h3>
+                    <p>An e-commerce site with a custom CMS using Vue.js and Firebase.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Project 3</h3>
+                    <p>A progressive web app for tracking fitness goals, built with Angular and GraphQL.</p>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-container" id="scrollToContact">
+            <div class="scroll-text">Contact Me</div>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact">
+            <h2>Contact Me</h2>
+            <p>Interested in working together? Fill out the form below, and I'll get back to you as soon as possible.</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        gsap.set("h1 span", {y: "100%"});
+        gsap.set(".accent-bg", {scaleX: 0});
+        
+        const tl = gsap.timeline();
+        
+        tl.to("h1 span", {duration: 1, y: 0, ease: "power4.out"})
+          .to(".accent-bg", {duration: 0.6, scaleX: 1, ease: "power4.out"}, "-=0.6")
+          .from("h2", {duration: 0.8, y: 30, opacity: 0, ease: "power3.out", stagger: 0.2}, "-=0.4")
+          .from(".btn", {duration: 0.6, y: 20, opacity: 0, ease: "power3.out", stagger: 0.1}, "-=0.4")
+          .from(".image-container", {duration: 1, x: 100, opacity: 0, ease: "power3.out"}, "-=0.8")
+          .from("#scrollToAbout", {duration: 0.6, y: 30, opacity: 0, ease: "power3.out"}, "-=0.4");
+
+        const sections = document.querySelectorAll('section');
+        let isScrolling = false;
+        let currentSection = 0;
+
+        function goToSection(index) {
+            isScrolling = true;
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: { y: sections[index], autoKill: true },
+                ease: "power3.inOut",
+                onComplete: () => {
+                    isScrolling = false;
+                    currentSection = index;
+                }
+            });
+        }
+
+        window.addEventListener('wheel', (e) => {
+            if (isScrolling) return;
+            
+            if (e.deltaY > 0 && currentSection < sections.length - 1) {
+                goToSection(currentSection + 1);
+            } else if (e.deltaY < 0 && currentSection > 0) {
+                goToSection(currentSection - 1);
+            }
+        });
+
+        document.getElementById('scrollToAbout').addEventListener('click', () => goToSection(1));
+        document.getElementById('scrollToProjects').addEventListener('click', () => goToSection(2));
+        document.getElementById('scrollToContact').addEventListener('click', () => goToSection(3));
+        document.getElementById('scrollToTop').addEventListener('click', () => goToSection(0));
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+            if (isScrolling) return;
+            
+            if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
+                goToSection(currentSection + 1);
+            } else if (e.key === 'ArrowUp' && currentSection > 0) {
+                goToSection(currentSection - 1);
+            }
+        });
+
+        // Touch events for mobile
+        let touchStartY = 0;
+        window.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        window.addEventListener('touchend', (e) => {
+            if (isScrolling) return;
+            
+            const touchEndY = e.changedTouches[0].clientY;
+            const diff = touchStartY - touchEndY;
+
+            if (diff > 50 && currentSection < sections.length - 1) {
+                goToSection(currentSection + 1);
+            } else if (diff < -50 && currentSection > 0) {
+                goToSection(currentSection - 1);
+            }
+        });
+
+        // Initial scroll position
+        window.addEventListener('load', () => {
+            currentSection = Math.round(window.scrollY / window.innerHeight);
+            goToSection(currentSection);
+        });
+    </script>
 </body>
 </html>
-
